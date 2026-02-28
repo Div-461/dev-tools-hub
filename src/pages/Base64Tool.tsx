@@ -36,7 +36,7 @@ const Base64Tool = () => {
         onInputChange={setInput}
         onConvert={convert}
         onClear={() => { setInput(""); setOutput(""); setError(""); }}
-        sampleInput={base64Sample}
+        sampleInput={mode === "encode" ? base64Sample : encodeBase64(base64Sample)}
         actionLabel={mode === "encode" ? "Encode" : "Decode"}
         inputLabel={mode === "encode" ? "Plain Text" : "Base64 String"}
         outputLabel={mode === "encode" ? "Base64 String" : "Plain Text"}
