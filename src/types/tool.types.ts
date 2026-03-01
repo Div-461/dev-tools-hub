@@ -1,4 +1,4 @@
-import { FileJson, FileSpreadsheet, FileCode, Lock, Clock, Key, Database } from "lucide-react";
+import { FileJson, FileSpreadsheet, FileCode, Lock, Clock, Key, Database, Braces } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface ToolInfo {
@@ -9,6 +9,7 @@ export interface ToolInfo {
 }
 
 export const tools: ToolInfo[] = [
+  { name: "JSON Viewer", path: "/json-viewer", description: "View and explore large JSON files with a virtualized tree", icon: Braces },
   { name: "JSON to CSV", path: "/json-to-csv", description: "Convert JSON arrays to CSV format instantly", icon: FileJson },
   { name: "CSV to JSON", path: "/csv-to-json", description: "Parse CSV data into structured JSON", icon: FileSpreadsheet },
   { name: "XML Formatter", path: "/xml-formatter", description: "Pretty-print and validate XML documents", icon: FileCode },

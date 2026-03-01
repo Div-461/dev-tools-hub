@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 
 const Index = lazy(() => import("./pages/Index"));
+const JsonViewer = lazy(() => import("./pages/JsonViewer"));
 const JsonToCsv = lazy(() => import("./pages/JsonToCsv"));
 const CsvToJson = lazy(() => import("./pages/CsvToJson"));
 const XmlFormatter = lazy(() => import("./pages/XmlFormatter"));
@@ -41,6 +42,7 @@ const App = () => (
               <Suspense fallback={<Loading />}>
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/json-viewer" element={<JsonViewer />} />
                   <Route path="/json-to-csv" element={<JsonToCsv />} />
                   <Route path="/csv-to-json" element={<CsvToJson />} />
                   <Route path="/xml-formatter" element={<XmlFormatter />} />
