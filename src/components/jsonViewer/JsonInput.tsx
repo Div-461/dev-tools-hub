@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef } from "react";
+import { memo, useCallback, useRef, useState } from "react";
 import { Upload, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -14,10 +14,26 @@ const JsonInput = memo(({ value, onChange }: Props) => {
   const sizeBytes = new Blob([value]).size;
   const showWarning = sizeBytes > SIZE_WARNING;
 
+  const [fileError, setFileError] = useState<string | null>(null);
+
   const handleFile = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (!file) return;
+
+      const isJson =
+        file.type === "application/json" ||
+        file.name.toLowerCase().endsWith(".json");
+
+      if (!isJson) {
+        setFileError(
+          `Invalid file type "${file.name.split(".").pop()}". Please upload a .json file.`
+        );
+        e.target.value = "";
+        return;
+      }
+
+      setFileError(null);
       const reader = new FileReader();
       reader.onload = () => {
         if (typeof reader.result === "string") {
@@ -52,6 +68,13 @@ const JsonInput = memo(({ value, onChange }: Props) => {
           onChange={handleFile}
         />
       </div>
+
+      {fileError && (
+        <div className="flex items-center gap-2 rounded-md border border-destructive/50 bg-destructive/10 p-2 text-xs text-destructive">
+          <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
+          <span>{fileError}</span>
+        </div>
+      )}
 
       {showWarning && (
         <div className="flex items-center gap-2 rounded-md border border-accent/50 bg-accent/10 p-2 text-xs text-accent-foreground">
