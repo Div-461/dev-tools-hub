@@ -65,7 +65,7 @@ const SqlFormatter = () => {
             dialect={dialect}
             onDialectChange={setDialect}
             onFormat={handleFormat}
-            onSample={() => setInput(sqlSample)}
+            onSample={() => { setInput(sqlSample); setDialect("tsql"); }}
             onClear={handleClear}
             onCopy={() => copy(output)}
             onDownload={handleDownload}
