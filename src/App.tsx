@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
@@ -20,8 +19,6 @@ const JwtDecoder = lazy(() => import("./pages/JwtDecoder"));
 const SqlFormatter = lazy(() => import("./pages/SqlFormatter"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const queryClient = new QueryClient();
-
 const Loading = () => (
   <div className="flex min-h-[50vh] items-center justify-center">
     <div className="h-6 w-6 animate-spin rounded-full border-2 border-primary border-t-transparent" />
@@ -31,7 +28,6 @@ const Loading = () => (
 const App = () => (
   <ThemeProvider>
   <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -58,7 +54,6 @@ const App = () => (
           </div>
         </BrowserRouter>
       </TooltipProvider>
-    </QueryClientProvider>
   </HelmetProvider>
   </ThemeProvider>
 );
