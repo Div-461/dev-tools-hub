@@ -47,6 +47,7 @@ const App = () => (
                   <Route path="/timestamp" element={<TimestampConverter />} />
                   <Route path="/jwt-decoder" element={<JwtDecoder />} />
                   <Route path="/sql-formatter" element={<SqlFormatter />} />
+                  <Route path="/text-compare" element={<TextCompare />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
