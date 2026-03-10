@@ -17,6 +17,7 @@ const Base64Tool = lazy(() => import("./pages/Base64Tool"));
 const TimestampConverter = lazy(() => import("./pages/TimestampConverter"));
 const JwtDecoder = lazy(() => import("./pages/JwtDecoder"));
 const SqlFormatter = lazy(() => import("./pages/SqlFormatter"));
+const TextCompare = lazy(() => import("./pages/TextCompare"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const Loading = () => (
