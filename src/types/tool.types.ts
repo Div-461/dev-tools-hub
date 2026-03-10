@@ -1,4 +1,4 @@
-import { FileJson, FileSpreadsheet, FileCode, Lock, Clock, Key, Database, Braces } from "lucide-react";
+import { FileJson, FileSpreadsheet, FileCode, Lock, Clock, Key, Database, Braces, GitCompareArrows } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface ToolInfo {
@@ -17,4 +17,5 @@ export const tools: ToolInfo[] = [
   { name: "Timestamp", path: "/timestamp", description: "Convert between Unix timestamps and dates", icon: Clock },
   { name: "JWT Decoder", path: "/jwt-decoder", description: "Decode and inspect JSON Web Tokens", icon: Key },
   { name: "SQL Formatter", path: "/sql-formatter", description: "Format SQL queries with proper indentation", icon: Database },
+  { name: "Text Compare", path: "/text-compare", description: "Compare two texts with line and word diff highlighting", icon: GitCompareArrows },
 ];
