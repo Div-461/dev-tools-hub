@@ -48,20 +48,15 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground",
-                location.pathname === link.path
-                  ? "bg-secondary text-foreground"
-                  : "text-muted-foreground"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
+          <Link
+            to="/"
+            className={cn(
+              "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground",
+              location.pathname === "/" ? "bg-secondary text-foreground" : "text-muted-foreground"
+            )}
+          >
+            Home
+          </Link>
 
           {/* Tools Dropdown */}
           <div ref={dropdownRef} className="relative">
@@ -78,7 +73,6 @@ const Navbar = () => {
               Tools
               <ChevronDown className={cn("h-3.5 w-3.5 transition-transform", toolsOpen && "rotate-180")} />
             </button>
-
             {toolsOpen && (
               <div className="absolute top-full right-0 mt-1 w-64 rounded-lg border border-border bg-popover p-2 shadow-lg animate-in fade-in-0 zoom-in-95">
                 {tools.map((tool) => {
@@ -89,9 +83,7 @@ const Navbar = () => {
                       to={tool.path}
                       className={cn(
                         "flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors hover:bg-secondary",
-                        location.pathname === tool.path
-                          ? "bg-secondary text-foreground"
-                          : "text-muted-foreground"
+                        location.pathname === tool.path ? "bg-secondary text-foreground" : "text-muted-foreground"
                       )}
                     >
                       <Icon className="h-4 w-4 text-primary shrink-0" />
@@ -102,6 +94,19 @@ const Navbar = () => {
               </div>
             )}
           </div>
+
+          {navLinks.filter(l => l.path !== "/").map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={cn(
+                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground",
+                location.pathname === link.path ? "bg-secondary text-foreground" : "text-muted-foreground"
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
         {/* Right side */}
