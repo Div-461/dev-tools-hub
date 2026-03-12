@@ -18,6 +18,10 @@ const TimestampConverter = lazy(() => import("./pages/TimestampConverter"));
 const JwtDecoder = lazy(() => import("./pages/JwtDecoder"));
 const SqlFormatter = lazy(() => import("./pages/SqlFormatter"));
 const TextCompare = lazy(() => import("./pages/TextCompare"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const Loading = () => (
@@ -28,7 +32,7 @@ const Loading = () => (
 
 const App = () => (
   <ThemeProvider>
-  <HelmetProvider>
+    <HelmetProvider>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -48,6 +52,10 @@ const App = () => (
                   <Route path="/jwt-decoder" element={<JwtDecoder />} />
                   <Route path="/sql-formatter" element={<SqlFormatter />} />
                   <Route path="/text-compare" element={<TextCompare />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<Terms />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
@@ -56,7 +64,7 @@ const App = () => (
           </div>
         </BrowserRouter>
       </TooltipProvider>
-  </HelmetProvider>
+    </HelmetProvider>
   </ThemeProvider>
 );
 
