@@ -16,6 +16,10 @@ const FileTextInput = memo(({ label, value, onChange, ariaLabel }: Props) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    if (!value) setFileName(null);
+  }, [value]);
+
   const readFile = useCallback(
     (file: File) => {
       if (file.size > MAX_FILE_SIZE) {
