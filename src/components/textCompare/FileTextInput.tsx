@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { Upload, FileText, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -15,6 +15,10 @@ const ACCEPTED_TYPES = ".txt,.csv,.json,.xml,.sql,.md,.log,.js,.ts,.html,.css,.p
 const FileTextInput = memo(({ label, value, onChange, ariaLabel }: Props) => {
   const [fileName, setFileName] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!value) setFileName(null);
+  }, [value]);
 
   const readFile = useCallback(
     (file: File) => {
