@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useClipboard } from "@/hooks/useClipboard";
 import { useDiff, type DiffMode } from "@/hooks/useDiff";
 import DiffViewer from "@/components/textCompare/DiffViewer";
+import FileTextInput from "@/components/textCompare/FileTextInput";
 import ErrorMessage from "@/components/ErrorMessage";
 import { tools } from "@/types/tool.types";
 
@@ -152,30 +153,20 @@ const TextCompare = () => {
           </Button>
         </div>
 
-        {/* Text inputs */}
+        {/* File / Text inputs */}
         <div className="grid gap-4 md:grid-cols-2 mb-4">
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Original Text</label>
-            <textarea
-              value={original}
-              onChange={(e) => setOriginal(e.target.value)}
-              className="min-h-[220px] w-full resize-y rounded-lg border border-border bg-input p-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Paste the original text here..."
-              spellCheck={false}
-              aria-label="Original text input"
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Modified Text</label>
-            <textarea
-              value={modified}
-              onChange={(e) => setModified(e.target.value)}
-              className="min-h-[220px] w-full resize-y rounded-lg border border-border bg-input p-3 font-mono text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Paste the modified text here..."
-              spellCheck={false}
-              aria-label="Modified text input"
-            />
-          </div>
+          <FileTextInput
+            label="Original Text"
+            value={original}
+            onChange={setOriginal}
+            ariaLabel="Original text file input"
+          />
+          <FileTextInput
+            label="Modified Text"
+            value={modified}
+            onChange={setModified}
+            ariaLabel="Modified text file input"
+          />
         </div>
 
         {/* Loading */}
